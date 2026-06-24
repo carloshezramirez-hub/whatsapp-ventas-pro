@@ -20,7 +20,7 @@ Landing → Stripe Checkout → Formulario post-pago → Entrega personalizada e
 
 ## Tecnología
 
-Next.js, TypeScript, Tailwind CSS, Stripe y Formspree.
+Next.js, TypeScript, Tailwind CSS, Stripe y Google Sheets (Apps Script).
 
 ## Estado
 
@@ -34,4 +34,4 @@ Variables necesarias:
 - STRIPE_PRICE_COMPLETO
 - NEXT_PUBLIC_SITE_URL
 - NEXT_PUBLIC_SUPPORT_EMAIL
-- NEXT_PUBLIC_FORMSPREE_ENDPOINT
+- SHEET_WEBHOOK_URL

@@ -10,10 +10,6 @@ export const siteUrl =
 export const supportEmail =
   process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "contact@stoutlab.com";
 
-export const formspreeEndpoint =
-  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ??
-  "https://formspree.io/f/PLACEHOLDER";
-
 export const productName = "Sistema WhatsApp Ventas Pro";
 
 export const legalDisclaimer =

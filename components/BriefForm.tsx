@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { formspreeEndpoint } from "@/lib/config";
 
 interface Field {
   name: string;
@@ -76,13 +75,14 @@ export default function BriefForm({ plan }: { plan: string }) {
     setError(false);
 
     const formData = new FormData(e.currentTarget);
-    formData.append("paquete", plan);
+    const payload = Object.fromEntries(formData.entries());
+    payload.paquete = plan;
 
     try {
-      const res = await fetch(formspreeEndpoint, {
+      const res = await fetch("/api/brief", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error();
       router.push("/brief-recibido");
