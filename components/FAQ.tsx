@@ -1,35 +1,23 @@
 const faqs = [
   {
-    q: "¿Es un curso?",
-    a: "No. Es un sistema digital listo para usar con respuestas, scripts, hojas de control y guías simples.",
+    q: "¿Recibo algo genérico?",
+    a: "No. Preparamos una guía personalizada según las respuestas que nos des después del pago.",
   },
   {
-    q: "¿Funciona con WhatsApp normal?",
-    a: "Sí, aunque recomendamos usar WhatsApp Business para aprovechar etiquetas, respuestas rápidas y organización.",
+    q: "¿Cuándo recibo mi documento?",
+    a: "En máximo 24 horas después de llenar el formulario.",
   },
   {
-    q: "¿Necesito saber Excel?",
-    a: "No. El CRM está hecho en Google Sheets y viene listo para copiar y usar.",
+    q: "¿Cómo me lo envían?",
+    a: "Te lo enviaremos al correo que dejes en el formulario. También puedes dejar tu WhatsApp para contacto.",
   },
   {
-    q: "¿Cuándo recibo el acceso?",
-    a: "Después del pago, recibirás el acceso automáticamente en el correo que usaste al comprar.",
+    q: "¿Funciona para cualquier negocio?",
+    a: "Está pensado para negocios pequeños que venden por WhatsApp: belleza, comida, ropa, cursos, servicios, reparaciones, mascotas, fitness y más.",
   },
   {
-    q: "¿Sirve para mi tipo de negocio?",
-    a: "Está diseñado para negocios pequeños que venden por WhatsApp: belleza, comida, ropa, servicios, cursos, reparaciones, mascotas, fitness y más.",
-  },
-  {
-    q: "¿Incluye atención personalizada?",
-    a: "No. Es un producto digital de acceso inmediato. Incluye instrucciones claras para usarlo por tu cuenta.",
-  },
-  {
-    q: "¿Tengo que instalar algo?",
-    a: "No. Solo necesitas acceso a WhatsApp, Google Sheets y los documentos incluidos.",
-  },
-  {
-    q: "¿Puedo usarlo desde el celular?",
-    a: "Sí. Puedes revisar los mensajes, copiar respuestas y usar el sistema desde celular. Para editar el CRM puede ser más cómodo usar computadora.",
+    q: "¿Es una asesoría?",
+    a: "No. Es un documento personalizado listo para usar. No incluye llamada ni consultoría uno a uno.",
   },
 ];
 

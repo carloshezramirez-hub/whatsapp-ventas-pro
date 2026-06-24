@@ -1,4 +1,5 @@
 import type { Plan } from "@/lib/config";
+import BuyButton from "./BuyButton";
 
 function CheckIcon() {
   return (
@@ -51,7 +52,7 @@ export default function PricingCard({ plan }: { plan: Plan }) {
         </span>
       </div>
       <p className="mt-1 text-xs font-medium text-ink-muted">
-        Pago único · Acceso inmediato
+        Pago único · Acceso en aprox. 24 h
       </p>
 
       <ul className="mt-6 flex-1 space-y-3">
@@ -63,17 +64,15 @@ export default function PricingCard({ plan }: { plan: Plan }) {
         ))}
       </ul>
 
-      {/*
-        Reemplazar este link cuando tengas tus Stripe Payment Links reales.
-        El valor viene de lib/config.ts (variables NEXT_PUBLIC_STRIPE_*).
-        Abre en la misma ventana (sin target="_blank"), como se pidió.
-      */}
-      <a
-        href={plan.href}
-        className={isPopular ? "btn-primary mt-7 w-full" : "btn-dark mt-7 w-full"}
-      >
-        {plan.ctaLabel}
-      </a>
+      <div className="mt-7">
+        <BuyButton
+          plan={plan.id}
+          label={plan.ctaLabel}
+          className={
+            isPopular ? "btn-primary w-full" : "btn-dark w-full"
+          }
+        />
+      </div>
 
       <p className="mt-3 text-center text-xs text-ink-muted">
         Pago seguro con Stripe

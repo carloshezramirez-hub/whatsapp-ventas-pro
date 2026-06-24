@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Sistema WhatsApp Ventas Pro",
   description:
-    "Sistema digital con respuestas rápidas, CRM en Google Sheets y scripts para organizar ventas por WhatsApp.",
+    "Guía personalizada con respuestas, seguimiento y mensajes de venta para tu negocio en WhatsApp. Pago único y entrega en máximo 24 horas.",
   openGraph: {
     title: "Sistema WhatsApp Ventas Pro",
     description:
-      "Organiza tus conversaciones, respuestas y seguimiento de clientes por WhatsApp.",
+      "Compra tu guía personalizada de ventas por WhatsApp. La adaptamos a tu negocio y te la enviamos en máximo 24 horas.",
     type: "website",
     url: siteUrl,
   },

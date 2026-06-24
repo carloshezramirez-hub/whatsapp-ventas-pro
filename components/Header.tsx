@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 const navLinks = [
-  { href: "#que-incluye", label: "Qué incluye" },
-  { href: "#planes", label: "Planes" },
+  { href: "#que-recibes", label: "Qué recibes" },
+  { href: "#planes", label: "Paquetes" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -33,7 +33,7 @@ export default function Header() {
         </nav>
 
         <a href="#planes" className="btn-primary px-4 py-2 text-sm sm:px-5">
-          Ver planes
+          Ver paquetes
         </a>
       </div>
     </header>

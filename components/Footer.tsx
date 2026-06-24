@@ -14,7 +14,7 @@ export default function Footer() {
               WhatsApp Ventas Pro
             </div>
             <p className="mt-3 text-sm text-ink-muted">
-              Producto digital · Acceso inmediato
+              Producto digital · Acceso por correo
             </p>
           </div>
 

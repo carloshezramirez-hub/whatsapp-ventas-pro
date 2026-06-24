@@ -34,11 +34,11 @@ export default function TerminosPage() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold text-ink">3. Acceso inmediato</h2>
+        <h2 className="text-lg font-semibold text-ink">3. Entrega del acceso</h2>
         <p className="mt-2">
-          Tras confirmarse el pago, el acceso se envía automáticamente al correo
-          electrónico usado durante la compra. Revisa también las carpetas de
-          spam o promociones.
+          Tras confirmarse el pago, el acceso se envía al correo electrónico
+          usado durante la compra en un plazo aproximado de 24 horas. Revisa
+          también las carpetas de spam o promociones.
         </p>
       </div>
 

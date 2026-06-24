@@ -1,11 +1,11 @@
 import WhatsAppMockup from "./WhatsAppMockup";
+import BuyButton from "./BuyButton";
 
 const bullets = [
-  "Acceso inmediato",
-  "Listo para copiar y pegar",
-  "Funciona con WhatsApp Business",
-  "Ideal para negocios pequeños",
-  "Sin pagar un CRM caro",
+  "Hecho para tu mercado y negocio",
+  "Documento personalizado en máximo 24 horas",
+  "Mensajes listos para copiar y usar",
+  "Ideal para negocios que venden por WhatsApp",
 ];
 
 function CheckIcon() {
@@ -31,15 +31,16 @@ export default function Hero() {
       {/* Fondo sutil */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-brand-50/60 to-white" />
 
-      <div className="container-content grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
+      <div className="container-content grid gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
         <div className="animate-fade-up">
-          <span className="eyebrow">Producto digital · Acceso inmediato</span>
+          <span className="eyebrow">Guía personalizada para tu negocio</span>
           <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            Organiza tus ventas por WhatsApp en menos de 30 minutos
+            Vende mejor por WhatsApp con mensajes hechos para tu negocio
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
-            Respuestas listas, seguimiento de clientes, CRM en Google Sheets y
-            scripts para vender sin improvisar.
+            Después de tu compra, llenas un formulario corto y preparamos una
+            guía personalizada con respuestas, seguimiento y mensajes de venta
+            para tu tipo de negocio.
           </p>
 
           <ul className="mt-7 grid gap-2.5 sm:grid-cols-2">
@@ -52,13 +53,16 @@ export default function Hero() {
           </ul>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#planes" className="btn-primary">
-              Elegir mi plan
+            <a href="#planes" className="btn-secondary order-2 sm:order-1">
+              Ver paquetes
             </a>
-            <a href="#que-incluye" className="btn-secondary">
-              Ver qué incluye
-            </a>
+            <span className="order-1 sm:order-2">
+              <BuyButton plan="pro" label="Comprar Pro — $249" />
+            </span>
           </div>
+          <p className="mt-3 text-sm text-ink-muted">
+            Después del pago llenarás un formulario para personalizar tu guía.
+          </p>
         </div>
 
         <div className="animate-fade-up [animation-delay:120ms]">

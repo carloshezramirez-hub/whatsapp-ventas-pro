@@ -1,14 +1,12 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Benefits from "@/components/Benefits";
-import HowItWorks from "@/components/HowItWorks";
 import PricingCard from "@/components/PricingCard";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import BuyButton from "@/components/BuyButton";
 import { plans, getPlan } from "@/lib/config";
 
-/* Iconos simples y neutros para "Qué incluye" */
-function FeatureIcon() {
+function CheckBadge() {
   return (
     <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
       <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -22,22 +20,54 @@ function FeatureIcon() {
   );
 }
 
-const includes = [
-  { title: "Respuestas rápidas", text: "Mensajes listos para copiar y pegar." },
-  { title: "Scripts de conversación", text: "Guías para vender sin improvisar." },
-  { title: "CRM en Google Sheets", text: "Organiza clientes sin pagar un CRM caro." },
-  { title: "Sistema de etiquetas", text: "Clasifica cada conversación con claridad." },
-  { title: "Seguimiento de clientes", text: "Da seguimiento sin olvidar conversaciones." },
-  { title: "Promociones listas", text: "Plantillas para tus ofertas." },
-  { title: "Mensajes para estados", text: "Textos para publicar en tus estados." },
-  { title: "Postventa y referidos", text: "Mantén la relación después de la venta." },
+function CheckLine() {
+  return (
+    <svg className="mt-0.5 h-5 w-5 flex-none text-brand-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.1 3.1 6.8-6.8a1 1 0 0 1 1.4 0Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+const recibes = [
+  {
+    title: "Respuestas para clientes",
+    text: "Mensajes para precios, dudas, descuentos y seguimiento.",
+  },
+  {
+    title: "Mensajes de seguimiento",
+    text: "Textos para volver a contactar a quienes preguntaron y no compraron.",
+  },
+  {
+    title: "Ideas para vender mejor",
+    text: "Promociones y mensajes adaptados a tu tipo de negocio.",
+  },
+  {
+    title: "Organización simple",
+    text: "Recomendaciones para ordenar clientes, pedidos y próximos mensajes.",
+  },
+  {
+    title: "Guía personalizada",
+    text: "La adaptamos según tu mercado, producto y necesidades.",
+  },
+];
+
+const despuesBullets = [
+  "Nombre de tu negocio",
+  "Qué vendes",
+  "Tipo de cliente",
+  "Dudas frecuentes",
+  "Qué quieres mejorar en tus ventas por WhatsApp",
 ];
 
 export default function HomePage() {
-  // Orden móvil pedido: Pro, Completo, Express
-  const pro = getPlan("pro");
-  const completo = getPlan("completo");
-  const express = getPlan("express");
+  // Orden móvil: Pro, Completo, Express
+  const pro = getPlan("pro")!;
+  const completo = getPlan("completo")!;
+  const express = getPlan("express")!;
   const mobileOrder = [pro, completo, express];
 
   return (
@@ -47,35 +77,20 @@ export default function HomePage() {
       <main>
         <Hero />
 
-        {/* 3. Problema */}
-        <section className="section bg-surface-soft">
-          <div className="container-content max-w-3xl text-center">
-            <span className="eyebrow">El reto</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              WhatsApp es práctico, pero se desordena rápido
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-              Cuando llegan preguntas, cotizaciones y clientes interesados, es
-              fácil perder el seguimiento. Este sistema te ayuda a tener
-              respuestas listas, etiquetas claras y una hoja simple para
-              organizar cada conversación.
-            </p>
-          </div>
-        </section>
-
-        {/* 4. Qué incluye */}
-        <section id="que-incluye" className="section bg-white">
+        {/* Qué vas a recibir */}
+        <section id="que-recibes" className="section bg-surface-soft">
           <div className="container-content">
-            <div className="max-w-2xl">
-              <span className="eyebrow">Qué incluye</span>
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="eyebrow">Qué vas a recibir</span>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                Todo lo que necesitas para ordenar tus ventas
+                Recibes una guía lista para usar
               </h2>
             </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {includes.map((item) => (
+
+            <div className="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {recibes.map((item) => (
                 <div key={item.title} className="card p-6">
-                  <FeatureIcon />
+                  <CheckBadge />
                   <h3 className="mt-4 font-semibold text-ink">{item.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
                     {item.text}
@@ -86,17 +101,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. Planes */}
-        <section id="planes" className="section bg-surface-soft">
+        {/* Paquetes */}
+        <section id="planes" className="section bg-white">
           <div className="container-content">
             <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">Planes</span>
+              <span className="eyebrow">Paquetes</span>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                Elige el sistema que necesitas hoy
+                Elige tu paquete
               </h2>
               <p className="mt-4 text-lg text-ink-soft">
-                Todos los planes son de pago único, con acceso inmediato al
-                correo usado en la compra.
+                Pago único. Después de pagar llenas un formulario y recibes tu
+                documento personalizado en máximo 24 horas.
               </p>
             </div>
 
@@ -116,118 +131,59 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. Cómo funciona */}
-        <HowItWorks />
-
-        {/* 7. Ejemplo práctico (antes / después) */}
+        {/* Después del pago */}
         <section className="section bg-surface-soft">
           <div className="container-content">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">Ejemplo práctico</span>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                La diferencia se nota en la primera respuesta
-              </h2>
-            </div>
-
-            <div className="mx-auto mt-10 grid max-w-4xl gap-5 md:grid-cols-2">
-              {/* Antes */}
-              <div className="card p-6">
-                <span className="inline-flex rounded-full bg-surface-soft px-3 py-1 text-xs font-semibold text-ink-muted">
-                  Antes
-                </span>
-                <div className="mt-4 space-y-3">
-                  <div className="flex justify-start">
-                    <div className="max-w-[85%] rounded-2xl rounded-tl-md bg-surface-soft px-4 py-2.5 text-sm text-ink-soft">
-                      Hola, ¿cuánto cuesta?
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="max-w-[85%] rounded-2xl rounded-tr-md bg-ink/5 px-4 py-2.5 text-sm text-ink-soft">
-                      Hola, depende, ¿qué necesitas?
-                    </div>
-                  </div>
-                </div>
+            <div className="mx-auto max-w-3xl rounded-3xl border border-surface-line bg-white p-8 shadow-soft sm:p-12">
+              <div className="text-center">
+                <span className="eyebrow">Después del pago</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink">
+                  Cuéntanos de tu negocio
+                </h2>
+                <p className="mt-4 text-lg text-ink-soft">
+                  Te llevaremos a un formulario corto para conocer tu negocio.
+                  Con esa información preparamos tu documento personalizado y te
+                  lo enviamos en máximo 24 horas.
+                </p>
               </div>
 
-              {/* Después */}
-              <div className="card border-brand-100 p-6">
-                <span className="inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-                  Después
-                </span>
-                <div className="mt-4 space-y-3">
-                  <div className="flex justify-start">
-                    <div className="max-w-[85%] rounded-2xl rounded-tl-md bg-surface-soft px-4 py-2.5 text-sm text-ink-soft">
-                      Hola, ¿cuánto cuesta?
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="max-w-[88%] rounded-2xl rounded-tr-md bg-brand-600 px-4 py-2.5 text-sm text-white">
-                      Hola 👋 Claro. Tenemos estas opciones: [opción 1],
-                      [opción 2] y [opción 3]. La más recomendada para ti sería
-                      [opción]. ¿Quieres que te pase disponibilidad y forma de
-                      pago?
-                    </div>
-                  </div>
-                </div>
+              <ul className="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2">
+                {despuesBullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2.5 text-[15px] text-ink-soft">
+                    <CheckLine />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-9 flex justify-center">
+                <BuyButton plan="pro" label="Comprar Pro — $249" />
               </div>
-            </div>
-
-            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-ink-soft">
-              Además, el sistema incluye mensajes de seguimiento para
-              conversaciones que quedan pendientes.
-            </p>
-          </div>
-        </section>
-
-        {/* 8. Beneficios */}
-        <Benefits />
-
-        {/* 9. Garantía */}
-        <section className="section bg-white">
-          <div className="container-content">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-brand-100 bg-brand-50/60 p-8 text-center sm:p-12">
-              <span className="flex mx-auto h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-white">
-                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
-                </svg>
-              </span>
-              <h2 className="mt-5 text-3xl font-bold tracking-tight text-ink">
-                Compra con tranquilidad
-              </h2>
-              <p className="mt-4 text-lg text-ink-soft">
-                Si el sistema no es lo que esperabas, puedes solicitar reembolso
-                dentro de los primeros 7 días.
-              </p>
             </div>
           </div>
         </section>
 
-        {/* 10. FAQ */}
+        {/* FAQ */}
         <FAQ />
 
-        {/* 11. CTA final */}
+        {/* CTA final */}
         <section className="section bg-white">
           <div className="container-content">
             <div className="mx-auto max-w-3xl rounded-3xl bg-ink p-8 text-center sm:p-12">
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Empieza hoy con un sistema simple para vender por WhatsApp
+                Compra tu guía personalizada y vende con más orden por WhatsApp
               </h2>
               <p className="mt-4 text-lg text-white/80">
-                Elige tu plan, paga con Stripe y recibe el acceso automáticamente
-                en tu correo.
+                Elige tu paquete, paga con Stripe y llena el formulario para
+                preparar tu documento.
               </p>
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                {/* Reemplazar este link cuando tengas tus Stripe Payment Links reales. */}
-                <a href={pro.href} className="btn-primary">
-                  {pro.ctaLabel}
-                </a>
-                {/* Reemplazar este link cuando tengas tus Stripe Payment Links reales. */}
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <BuyButton plan="pro" label="Comprar Pro — $249" />
                 <a
-                  href={completo.href}
+                  href="#planes"
                   className="btn border border-white/30 bg-transparent text-white hover:bg-white/10"
                 >
-                  {completo.ctaLabel}
+                  Ver paquetes
                 </a>
               </div>
               <p className="mt-4 text-xs text-white/60">Pago seguro con Stripe</p>
@@ -238,13 +194,10 @@ export default function HomePage() {
 
       <Footer />
 
-      {/* Barra fija móvil con botón "Ver planes" */}
+      {/* Barra fija móvil */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-surface-line bg-white/95 p-3 backdrop-blur-md md:hidden">
-        <a href="#planes" className="btn-primary w-full">
-          Ver planes
-        </a>
+        <BuyButton plan="pro" label="Comprar Pro — $249" className="btn-primary w-full" />
       </div>
-      {/* Espaciador para que la barra fija no tape el footer en móvil */}
       <div className="h-20 md:hidden" aria-hidden="true" />
     </>
   );

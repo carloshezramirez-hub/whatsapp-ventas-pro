@@ -1,33 +1,18 @@
 /**
  * Configuración central del sitio.
- *
- * Todos los valores se leen de variables de entorno NEXT_PUBLIC_* y tienen
- * un fallback con placeholders, para que el sitio funcione localmente
- * antes de tener dominio y links de Stripe reales.
- *
- * Reemplaza los valores definiendo .env.local (ver .env.example).
+ * Los valores públicos usan variables NEXT_PUBLIC_* con fallback de placeholder.
+ * Las claves de Stripe (secretas y price IDs) se leen solo en el servidor.
  */
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://TU-DOMINIO.com";
 
 export const supportEmail =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "soporte@TU-DOMINIO.com";
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "contact@stoutlab.com";
 
-export const stripeLinks = {
-  // Reemplazar este link cuando tengas tus Stripe Payment Links reales.
-  express:
-    process.env.NEXT_PUBLIC_STRIPE_EXPRESS_LINK ??
-    "https://buy.stripe.com/PLACEHOLDER_EXPRESS",
-  // Reemplazar este link cuando tengas tus Stripe Payment Links reales.
-  pro:
-    process.env.NEXT_PUBLIC_STRIPE_PRO_LINK ??
-    "https://buy.stripe.com/PLACEHOLDER_PRO",
-  // Reemplazar este link cuando tengas tus Stripe Payment Links reales.
-  completo:
-    process.env.NEXT_PUBLIC_STRIPE_COMPLETO_LINK ??
-    "https://buy.stripe.com/PLACEHOLDER_COMPLETO",
-} as const;
+export const formspreeEndpoint =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ??
+  "https://formspree.io/f/PLACEHOLDER";
 
 export const productName = "Sistema WhatsApp Ventas Pro";
 
@@ -45,7 +30,6 @@ export interface Plan {
   badge?: string;
   features: string[];
   ctaLabel: string;
-  href: string;
   highlight?: "popular" | "value";
 }
 
@@ -55,63 +39,60 @@ export const plans: Plan[] = [
     name: "Express",
     price: "$129 MXN",
     priceNumber: 129,
-    subtitle: "Para responder más rápido desde hoy",
+    subtitle: "Para mejorar tus respuestas básicas por WhatsApp.",
     features: [
-      "50 respuestas rápidas listas para copiar",
-      "10 mensajes de cierre",
-      "10 mensajes de seguimiento",
-      "Sistema básico de etiquetas",
-      "Mini guía para configurar WhatsApp Business",
+      "50 respuestas listas adaptadas a tu negocio",
+      "Mensajes para precios y dudas comunes",
+      "Mensajes de cierre",
+      "Mensajes de seguimiento básicos",
+      "Recomendaciones simples para organizar clientes",
     ],
     ctaLabel: "Comprar Express — $129",
-    href: stripeLinks.express,
   },
   {
     id: "pro",
     name: "Pro",
     price: "$249 MXN",
     priceNumber: 249,
-    subtitle: "Para organizar clientes y dar seguimiento",
-    badge: "Más vendido",
+    subtitle: "Para responder mejor, dar seguimiento y vender con más orden.",
+    badge: "Más elegido",
     highlight: "popular",
     features: [
-      "Todo lo del plan Express",
-      "CRM en Google Sheets",
-      "100 respuestas rápidas",
-      "Scripts completos de conversación",
-      "Pipeline de ventas",
-      "Calendario de seguimiento de 7 días",
-      "Calculadora básica de ventas",
+      "Todo lo de Express",
+      "100 respuestas adaptadas a tu negocio",
+      "Mensajes para clientes indecisos",
+      "Seguimiento de 7 días",
+      "Ideas de promociones para tu mercado",
+      "Guía simple para organizar tus conversaciones",
     ],
     ctaLabel: "Comprar Pro — $249",
-    href: stripeLinks.pro,
   },
   {
     id: "completo",
     name: "Completo",
     price: "$499 MXN",
     priceNumber: 499,
-    subtitle: "Para tener el sistema completo de ventas por WhatsApp",
-    badge: "Mejor valor",
+    subtitle: "Para recibir una guía más completa y específica para tu negocio.",
+    badge: "Más completo",
     highlight: "value",
     features: [
-      "Todo lo del plan Pro",
-      "CRM avanzado con dashboard",
-      "Sistema de seguimiento de 30 días",
-      "Pack de recuperación de clientes",
-      "Scripts por tipo de negocio",
-      "30 textos para estados de WhatsApp",
-      "Sistema de promociones",
+      "Todo lo de Pro",
+      "Mensajes por tipo de cliente",
+      "Seguimiento de 30 días",
+      "Mensajes para recuperar clientes",
+      "Textos para estados de WhatsApp",
+      "Ideas de promociones y combos",
       "Mensajes de postventa y referidos",
-      "Plantilla de link de bio",
+      "Recomendaciones para vender mejor según tu mercado",
     ],
     ctaLabel: "Comprar Completo — $499",
-    href: stripeLinks.completo,
   },
 ];
 
-export function getPlan(id: PlanId): Plan {
-  const plan = plans.find((p) => p.id === id);
-  if (!plan) throw new Error(`Plan no encontrado: ${id}`);
-  return plan;
+export function getPlan(id: string): Plan | undefined {
+  return plans.find((p) => p.id === id);
+}
+
+export function isPlanId(value: string): value is PlanId {
+  return plans.some((p) => p.id === value);
 }
